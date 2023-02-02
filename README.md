@@ -16,6 +16,8 @@ Ideias:
 
 * ver doc oficial do spring com oauth para obter mais detlhes.
 
+* ao final, criar uma imagem para cada ms e comunicá-las pelo docker compose, utilizando as portas da própria aplicação.
+
 Contexto:
 
 cadastrar/obter músicas
