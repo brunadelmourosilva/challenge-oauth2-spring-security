@@ -3,13 +3,10 @@ package br.com.brunadelmouro.resourceserver.controllers;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.oauth2.core.user.OAuth2User;
-import org.springframework.ui.Model;
+import org.springframework.security.oauth2.core.oidc.user.OidcUser;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.*;
 
@@ -24,9 +21,12 @@ public class MusicController {
 //        return modelAndView;
 //    }
 
+    //todo inserir mongodb, implementar meu server authorization
+
     @GetMapping("/user")
-    public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
-        return Collections.singletonMap("name", principal.getAttribute("name"));
+    public Map<String, Object> user(@AuthenticationPrincipal OidcUser principal) {
+        System.out.println("TOKEN: " + Objects.requireNonNull(principal.getIdToken().getTokenValue()));
+        return Collections.singletonMap("name", Objects.requireNonNull(principal.getAttribute("name")));
     }
 
     @GetMapping("/get-musics")

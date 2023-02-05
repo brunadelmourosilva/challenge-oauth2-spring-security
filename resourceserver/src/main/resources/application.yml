@@ -9,6 +9,10 @@ spring:
           facebook:
             client-id: #
             client-secret: #
+          #todo
+#          spotify:
+#            client-id:
+#            client-secret:
 
 
 #add my authorization server

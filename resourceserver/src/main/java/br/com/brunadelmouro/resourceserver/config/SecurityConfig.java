@@ -15,6 +15,12 @@ public class SecurityConfig {
     @Autowired
     ClientRegistrationRepository clientRegistrationRepository;
 
+    /**
+     * This repo use the strategy to verify users authenticated using COOKIES(social login).
+     * There is another way to verify users authenticated through the JWT. For this, it's necessary
+     * transform this repo in a resource server authorization.
+     * */
+
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity security) throws Exception {
 
@@ -32,6 +38,7 @@ public class SecurityConfig {
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .deleteCookies("JSESSIONID");
+                //.and().csrf().csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse());;
 
 
         return security.build();
