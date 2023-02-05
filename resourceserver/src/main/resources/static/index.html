@@ -13,17 +13,19 @@
 </head>
 <body>
 
-<h1>Login</h1>
+<!--<div class="container unauthenticated">-->
+<!--    With Google: <a href="/oauth2/authorization/google">click here</a>-->
+<!--</div>-->
 
-<div class="container unauthenticated">
-    With Google: <a href="/oauth2/authorization/google">click here</a>
-</div>
-
-<div class="container authenticated" style="display:none">
-    Logged in as: <span id="user"></span>
+<div class="container authenticated" style="display:inline">
+    <h3>Welcome to the music player, <span id="user"></span>!</h3>
 
     <div>
-        <a href="/logout">Logout</a>
+        <a class="bottom" href="/get-musics" style="display:inline" target="_blank">See all your songs</a>
+    </div>
+
+    <div>
+        <a class="bottom" href="/logout" style="display:inline">Logout</a>
     </div>
 
 </div>

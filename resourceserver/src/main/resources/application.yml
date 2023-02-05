@@ -6,3 +6,9 @@ spring:
           google:
             client-id: #
             client-secret: #
+          facebook:
+            client-id: #
+            client-secret: #
+
+
+#add my authorization server
