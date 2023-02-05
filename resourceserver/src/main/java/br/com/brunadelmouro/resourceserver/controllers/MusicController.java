@@ -3,7 +3,9 @@ package br.com.brunadelmouro.resourceserver.controllers;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -25,7 +27,8 @@ public class MusicController {
 
     @GetMapping("/user")
     public Map<String, Object> user(@AuthenticationPrincipal OidcUser principal) {
-        System.out.println("TOKEN: " + Objects.requireNonNull(principal.getIdToken().getTokenValue()));
+        System.out.println("TOKEN: " + SecurityContextHolder.getContext().getAuthentication());
+
         return Collections.singletonMap("name", Objects.requireNonNull(principal.getAttribute("name")));
     }
 
