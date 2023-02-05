@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
-import org.springframework.security.oauth2.core.user.OAuth2User;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,10 +26,10 @@ public class MusicController {
     //todo inserir mongodb, implementar meu server authorization
 
     @GetMapping("/user")
-    public Map<String, Object> user(@AuthenticationPrincipal OidcUser principal) {
+    public Map<String, Object> user(@AuthenticationPrincipal Jwt principal) {
         System.out.println("TOKEN: " + SecurityContextHolder.getContext().getAuthentication());
 
-        return Collections.singletonMap("name", Objects.requireNonNull(principal.getAttribute("name")));
+        return Collections.singletonMap("name", Objects.requireNonNull(principal.getClaim("name")));
     }
 
     @GetMapping("/get-musics")

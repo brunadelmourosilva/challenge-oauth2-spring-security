@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
 import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.web.SecurityFilterChain;
 
@@ -12,11 +13,9 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 public class SecurityConfig {
 
-    @Autowired
-    ClientRegistrationRepository clientRegistrationRepository;
-
     /**
      * This repo use the strategy to verify users authenticated using COOKIES(social login).
+     * TODO for all social login
      * There is another way to verify users authenticated through the JWT. For this, it's necessary
      * transform this repo in a resource server authorization.
      * */
@@ -32,9 +31,10 @@ public class SecurityConfig {
                 )
                 .oauth2Login()
                 .and()
+                //// TODO: 2/5/2023 parei aqui, resolver Failed to lazily resolve the supplied JwtDecoder instance
+                .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .logout()
                 .logoutSuccessUrl("/login")
-                //.logoutSuccessHandler(oidcLogoutSuccessHandler())
                 .invalidateHttpSession(true)
                 .clearAuthentication(true)
                 .deleteCookies("JSESSIONID");
@@ -43,12 +43,5 @@ public class SecurityConfig {
 
         return security.build();
     }
-
-//    private OidcClientInitiatedLogoutSuccessHandler oidcLogoutSuccessHandler() {
-//        OidcClientInitiatedLogoutSuccessHandler successHandler =
-//                new OidcClientInitiatedLogoutSuccessHandler(clientRegistrationRepository);
-//        successHandler.setPostLogoutRedirectUri("http://localhost:8080/login");
-//        return successHandler;
-//    }
 
 }

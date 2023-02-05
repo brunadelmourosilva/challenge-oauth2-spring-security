@@ -1,3 +1,6 @@
+server:
+  port: 8081
+
 spring:
   security:
     oauth2:
@@ -9,10 +12,11 @@ spring:
           facebook:
             client-id: 1545569249284628
             client-secret: e40b66ac8a3086c31363fae729265926
+      #my auth server that supports JWT header
+      resourceserver:
+        jwt:
+          issuer-uri: http://auth-server:8000
           #todo
 #          spotify:
 #            client-id: f4d6bf91134649969051be9a6b8f40ac
 #            client-secret: 90d8d7b5d6284cdd8a2dd666235346d8
-
-
-#add my authorization server
