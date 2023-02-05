@@ -32,3 +32,5 @@ https://spring.io/guides/tutorials/spring-boot-oauth2/#github-register-applicati
 https://docs.spring.io/spring-security/reference/5.6.0-RC1/servlet/oauth2/oauth2-login.html
 
 https://www.youtube.com/watch?v=EQ5EwIYsgIE&t=786s
+
+https://www.baeldung.com/spring-security-oauth-auth-server
