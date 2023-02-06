@@ -26,6 +26,11 @@ public class MusicController {
 
 
     //OAuth2User -> used to access through the JSESSIONID cookie
+    //JWT -> used to access through the jwt token using the headers
+
+    //// TODO: 2/6/2023 transform all the social login in the JWT access google and facebook(issuer-uri)
+    //// TODO: 2/6/2023 create a new microservice for the app client make the request using token
+    // TODO: 2/6/2023 fix the endpoints to add the new music data
 
     @GetMapping("/user")
     public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
