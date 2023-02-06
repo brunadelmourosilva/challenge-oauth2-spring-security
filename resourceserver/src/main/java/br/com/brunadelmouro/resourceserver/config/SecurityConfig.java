@@ -1,12 +1,10 @@
 package br.com.brunadelmouro.resourceserver.config;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
-import org.springframework.security.oauth2.client.registration.ClientRegistrationRepository;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -31,7 +29,6 @@ public class SecurityConfig {
                 )
                 .oauth2Login()
                 .and()
-                //// TODO: 2/5/2023 parei aqui, resolver Failed to lazily resolve the supplied JwtDecoder instance
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
                 .logout()
                 .logoutSuccessUrl("/login")

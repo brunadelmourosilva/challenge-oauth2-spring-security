@@ -6,9 +6,10 @@ spring:
     oauth2:
       client:
         registration:
+          #todo replace all credentials before to publish this repo
           google:
             client-id: 583133030463-7855bnfbit2odl4v0a40plkghinpkf6b.apps.googleusercontent.com
-            client-secret: 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
+            client-secret: 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
           facebook:
             client-id: 1545569249284628
             client-secret: e40b66ac8a3086c31363fae729265926

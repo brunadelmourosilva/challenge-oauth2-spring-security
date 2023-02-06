@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.oauth2.core.oidc.user.OidcUser;
+import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,13 +24,14 @@ public class MusicController {
 //        return modelAndView;
 //    }
 
-    //todo inserir mongodb, implementar meu server authorization
+
+    //OAuth2User -> used to access through the JSESSIONID cookie
 
     @GetMapping("/user")
-    public Map<String, Object> user(@AuthenticationPrincipal Jwt principal) {
+    public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
         System.out.println("TOKEN: " + SecurityContextHolder.getContext().getAuthentication());
 
-        return Collections.singletonMap("name", Objects.requireNonNull(principal.getClaim("name")));
+        return Collections.singletonMap("name", Objects.requireNonNull(principal.getAttribute("name")));
     }
 
     @GetMapping("/get-musics")
