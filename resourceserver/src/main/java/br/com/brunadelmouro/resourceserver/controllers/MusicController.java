@@ -21,19 +21,16 @@ public class MusicController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MusicController.class);
 
-//    public ModelAndView home()
-//    {
-//        ModelAndView modelAndView = new ModelAndView();
-//            modelAndView.setViewName("index");
-//        return modelAndView;
-//    }
-
-
     //OAuth2User -> used to access through the JSESSIONID cookie
     //JWT -> used to access through the jwt token using the headers
-    //// TODO: 2/6/2023 create a new microservice for the app client make the request using token
-    // TODO: 2/6/2023 fix the endpoints to add the new music data
 
+
+    /**
+     * To use this endpoint:
+     * - turn on the 2 microservices
+     * - on browser, access: http://localhost:8081/login
+     * - provide the login choosing a social login option :)
+     * */
     @GetMapping("/user")
     public Map<String, Object> user(@AuthenticationPrincipal OAuth2User principal) {
         System.out.println("TOKEN: " + SecurityContextHolder.getContext().getAuthentication());
@@ -48,6 +45,7 @@ public class MusicController {
         return new ResponseEntity<>(Arrays.asList("Get musics authorized by a social authorization server", UUID.randomUUID().toString(), UUID.randomUUID().toString()), HttpStatus.OK);
     }
 
+    // it will be used in the app client microservice
     @GetMapping("/get-musics-jwt")
     public ResponseEntity<List<String>> getMusics(@AuthenticationPrincipal Jwt jwt) {
         LOGGER.info("Info by Jwt: {}", jwt.getTokenValue());

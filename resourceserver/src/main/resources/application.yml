@@ -6,13 +6,12 @@ spring:
     oauth2:
       client:
         registration:
-          #todo replace all credentials before to publish this repo
           google:
             client-id: 583133030463-7855bnfbit2odl4v0a40plkghinpkf6b.apps.googleusercontent.com
-            client-secret: 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
+            client-secret: #
           facebook:
             client-id: 1545569249284628
-            client-secret: e40b66ac8a3086c31363fae729265926
+            client-secret: #
       #my auth server that supports JWT header
       resourceserver:
         jwt:
@@ -20,4 +19,4 @@ spring:
           #todo
 #          spotify:
 #            client-id: f4d6bf91134649969051be9a6b8f40ac
-#            client-secret: 90d8d7b5d6284cdd8a2dd666235346d8
+#            client-secret: dddb822569264307b88a58af8c4468e1

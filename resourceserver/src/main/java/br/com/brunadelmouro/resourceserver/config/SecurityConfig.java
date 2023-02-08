@@ -27,6 +27,8 @@ public class SecurityConfig {
                     .requestMatchers("/login", "/error", "/webjars/**").permitAll()
                     .anyRequest().authenticated()
                 )
+                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                .and()
                 .oauth2Login()
                 .and()
                 .oauth2ResourceServer(OAuth2ResourceServerConfigurer::jwt)
