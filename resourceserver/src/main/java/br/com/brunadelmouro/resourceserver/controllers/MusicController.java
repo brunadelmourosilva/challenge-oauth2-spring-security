@@ -45,13 +45,13 @@ public class MusicController {
     public ResponseEntity<List<String>> getMusics(@AuthenticationPrincipal OAuth2User principal) {
         LOGGER.info("Info by OAuth2User: {}", SecurityContextHolder.getContext().getAuthentication());
 
-        return new ResponseEntity<>(Arrays.asList(UUID.randomUUID().toString(), UUID.randomUUID().toString()), HttpStatus.OK);
+        return new ResponseEntity<>(Arrays.asList("Get musics authorized by a social authorization server", UUID.randomUUID().toString(), UUID.randomUUID().toString()), HttpStatus.OK);
     }
 
     @GetMapping("/get-musics-jwt")
     public ResponseEntity<List<String>> getMusics(@AuthenticationPrincipal Jwt jwt) {
         LOGGER.info("Info by Jwt: {}", jwt.getTokenValue());
 
-        return new ResponseEntity<>(Arrays.asList(UUID.randomUUID().toString(), UUID.randomUUID().toString()), HttpStatus.OK);
+        return new ResponseEntity<>(Arrays.asList("Get musics authorized by my own authorization server", UUID.randomUUID().toString(), UUID.randomUUID().toString()), HttpStatus.OK);
     }
 }
