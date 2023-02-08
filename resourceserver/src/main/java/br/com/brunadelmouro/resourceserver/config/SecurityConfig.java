@@ -5,6 +5,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.oauth2.server.resource.OAuth2ResourceServerConfigurer;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
@@ -13,7 +14,6 @@ public class SecurityConfig {
 
     /**
      * This repo use the strategy to verify users authenticated using COOKIES(social login).
-     * TODO for all social login
      * There is another way to verify users authenticated through the JWT. For this, it's necessary
      * transform this repo in a resource server authorization.
      * */
@@ -40,5 +40,4 @@ public class SecurityConfig {
 
         return security.build();
     }
-
 }
